@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --court-bg: #000000;
+  --court-panel: #141414;
+  --court-elevated: #1a1a1a;
+  --court-accent: #ff5b1f;
+  --court-accent2: #ff7a41;
+  --court-muted: #a3a3a3;
+  --court-border: rgba(255, 255, 255, 0.14);
+  --court-neon: #39ff14;
+  --court-gold: #fbbf24;
+  --ink: #ffffff;
+}
+
+/* Force deck palette even if Tailwind HMR cached old violet/cyan utilities */
+.text-court-neon {
+  color: #39ff14 !important;
+}
+.text-court-accent,
+.text-court-accent2 {
+  color: #ff5b1f !important;
+}
+.text-court-accent2 {
+  color: #ff7a41 !important;
+}
+.bg-court-accent,
+.bg-court-accent\/10,
+.bg-court-accent\/15,
+.bg-court-accent\/20 {
+  --tw-bg-opacity: 1;
+}
+.bg-btn-grad {
+  background-image: linear-gradient(135deg, #ff7a41 0%, #ff5b1f 55%, #e0470f 100%) !important;
+}
+.bg-court-bg {
+  background-color: #000000 !important;
+}
+.bg-court-panel,
+.bg-court-panel\/85,
+.bg-court-panel\/90,
+.bg-court-panel\/95 {
+  background-color: rgba(20, 20, 20, 0.95) !important;
+}
+.bg-court-elevated,
+.bg-court-elevated\/40,
+.bg-court-elevated\/50,
+.bg-court-elevated\/80 {
+  background-color: rgba(26, 26, 26, 0.9) !important;
+}
+.shadow-glow {
+  box-shadow: 0 0 40px -6px rgba(255, 91, 31, 0.55) !important;
+}
+.from-court-accent {
+  --tw-gradient-from: #ff5b1f !important;
+}
+.to-court-accent2 {
+  --tw-gradient-to: #ff7a41 !important;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--court-bg);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background:
+    radial-gradient(70% 50% at 50% -10%, rgba(255, 91, 31, 0.22) 0%, transparent 55%),
+    radial-gradient(50% 40% at 100% 60%, rgba(57, 255, 20, 0.1) 0%, transparent 50%),
+    #000000;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-[22px] border border-white/15 p-5 md:p-6;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(26, 26, 26, 0.85) 45%,
+      rgba(20, 20, 20, 0.95) 100%
+    );
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 18px 40px -20px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(18px);
+    transition: all 0.2s ease;
+  }
+
+  .panel-hover:hover {
+    @apply border-white/25;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(32, 32, 32, 0.9) 50%,
+      rgba(20, 20, 20, 0.96) 100%
+    );
+  }
+
+  .bento {
+    @apply rounded-[22px] border border-white/15 p-6 md:p-8;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(26, 26, 26, 0.85) 45%,
+      rgba(20, 20, 20, 0.95) 100%
+    );
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 18px 40px -20px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(18px);
+  }
+
+  .glass {
+    @apply rounded-2xl border border-white/15;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-white/25 bg-white/10 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-md;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white;
+    background-image: linear-gradient(135deg, #ff7a41 0%, #ff5b1f 55%, #e0470f 100%);
+    box-shadow: 0 10px 28px -10px rgba(255, 91, 31, 0.7);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    filter: brightness(0.96);
+    transform: translateY(0);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-4 py-2.5 text-sm font-medium text-white;
+    transition: all 0.2s ease;
+  }
+  .btn-ghost:hover {
+    @apply border-white/40 bg-white/10 text-white;
+  }
+
+  .stat-num {
+    @apply font-brand text-3xl tracking-wide text-white md:text-4xl;
+  }
+
+  .stat-label {
+    @apply text-xs font-medium tracking-wide text-court-muted;
+  }
+
+  .muted {
+    @apply text-court-muted;
+  }
+
+  .kbd {
+    @apply rounded-md border border-white/15 bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-court-muted;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-court-accent2;
+  }
+
+  .page-title {
+    @apply font-brand text-4xl tracking-[0.02em] text-white md:text-5xl;
+  }
+
+  .page-sub {
+    @apply mt-2 max-w-2xl text-sm leading-relaxed text-court-muted md:text-base;
+  }
+
+  .panel-title {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-court-muted;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    @apply rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white outline-none placeholder:text-court-muted;
+    transition: all 0.2s ease;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(255, 91, 31, 0.65);
+    box-shadow: 0 0 0 3px rgba(255, 91, 31, 0.2);
+  }
+}
+
+.font-brand {
+  font-family: "Bebas Neue", Impact, sans-serif;
+}
+
+.font-tagline {
+  font-family: "Instrument Serif", Georgia, serif;
+}
+
+.court-lines {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.recruit-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #39ff14;
+  text-stroke: 2px #39ff14;
+  paint-order: stroke fill;
+}
+
+@media (min-width: 768px) {
+  .recruit-outline {
+    -webkit-text-stroke: 3px #39ff14;
+    text-stroke: 3px #39ff14;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 91, 31, 0.35);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 91, 31, 0.5);
+}
